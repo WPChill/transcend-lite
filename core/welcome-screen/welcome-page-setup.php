@@ -14,9 +14,9 @@ function a_customize_register($wp_customize){
 				'transcend_recomended-section',
 				array(
 					'title'    => esc_html__( 'Recomended Actions', 'transcend' ),
-					'succes_text'	=> esc_html__( 'Follow us on :', 'transcend' ),
-					'facebook' => 'https://www.facebook.com/colorlib',
-					'twitter' => 'https://twitter.com/colorlib',
+					'succes_text'	=> __( "We're social :", 'affluent' ),
+					'facebook' => 'https://www.facebook.com/cpothemes/',
+					'twitter' => 'https://twitter.com/cpothemes',
 					'wp_review' => true,
 					'priority' => 0
 				)
@@ -29,6 +29,10 @@ add_action( 'customize_controls_enqueue_scripts', 'transcend_welcome_scripts_for
 
 function transcend_welcome_scripts_for_customizer(){
 	wp_enqueue_style( 'cpotheme-welcome-screen-customizer-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome_customizer.css' );
+	wp_enqueue_style( 'plugin-install' );
+	wp_enqueue_script( 'plugin-install' );
+	wp_enqueue_script( 'updates' );
+	wp_add_inline_script( 'plugin-install', 'var pagenow = "customizer";' );
 	wp_enqueue_script( 'cpotheme-welcome-screen-customizer-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome_customizer.js', array( 'customize-controls' ), '1.0', true );
 }
 
@@ -40,7 +44,8 @@ if ( is_admin() ) {
 	global $transcend_required_actions, $transcend_recommended_plugins;
 	$transcend_recommended_plugins = array(
 		'kiwi-social-share' => array( 'recommended' => false ),
-		'cpo-widgets' => array( 'recommended' => false )
+		'cpo-widgets' => array( 'recommended' => false ),
+		'cpo-shortcodes' => array( 'recommended' => false )
 	);
 	/*
 	 * id - unique id; required
