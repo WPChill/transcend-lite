@@ -18,9 +18,6 @@ class Transcend_Welcome {
 		/* enqueue script and style for welcome screen */
 		add_action( 'admin_enqueue_scripts', array( $this, 'transcend_welcome_style_and_scripts' ) );
 
-		/* enqueue script for customizer */
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'transcend_welcome_scripts_for_customizer' ) );
-
 		/* ajax callback for dismissable required actions */
 		add_action( 'wp_ajax_transcend_dismiss_required_action', array(
 			$this,
@@ -140,33 +137,16 @@ class Transcend_Welcome {
 	public function transcend_welcome_style_and_scripts( $hook_suffix ) {
 
 		wp_enqueue_style( 'cpotheme-welcome-screen-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome.css' );
-		wp_enqueue_script( 'cpotheme-welcome-screen-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome.js', array( 'jquery' ) );
+		wp_enqueue_script( 'cpotheme-welcome-screen-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome.js', array( 'jquery' ), '1.0', true );
 
 		wp_localize_script( 'cpotheme-welcome-screen-js', 'transcendWelcomeScreenObject', array(
 			'nr_actions_required'      => $this->count_actions(),
 			'ajaxurl'                  => admin_url( 'admin-ajax.php' ),
 			'template_directory'       => get_template_directory_uri(),
-			'no_required_actions_text' => __( 'Hooray! There are no required actions for you right now.', 'transcend' )
+			'no_required_actions_text' => __( 'Hooray! There are no required actions for you right now.', 'text-domain' )
 		) );
 
-	}
 
-	/**
-	 * Load scripts for customizer page
-	 *
-	 * @since  1.8.2.4
-	 */
-	public function transcend_welcome_scripts_for_customizer() {
-
-		wp_enqueue_style( 'cpotheme-welcome-screen-customizer-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome_customizer.css' );
-		wp_enqueue_script( 'cpotheme-welcome-screen-customizer-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome_customizer.js', array( 'jquery' ), '20120206', true );
-
-		wp_localize_script( 'cpotheme-welcome-screen-customizer-js', 'transcendWelcomeScreenCustomizerObject', array(
-			'nr_actions_required' => $this->count_actions(),
-			'aboutpage'           => esc_url( admin_url( 'themes.php?page=cpotheme-welcome&tab=recommended_actions' ) ),
-			'customizerpage'      => esc_url( admin_url( 'customize.php#recommended_actions' ) ),
-			'themeinfo'           => __( 'View Theme Info', 'transcend' ),
-		) );
 	}
 
 	/**

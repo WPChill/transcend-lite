@@ -39,8 +39,7 @@ if(!function_exists('cpotheme_setup')){
 		$locale_file = get_template_directory()."/languages/$locale.php";
 		if(is_readable($locale_file)) require_once($locale_file);
 
-		// Add welcome page
-		require get_template_directory() . '/core/welcome-screen/welcome-page-setup.php';
+		
 
 	}
 }

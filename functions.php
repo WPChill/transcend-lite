@@ -22,3 +22,6 @@ $include_path = get_template_directory().'/includes/';
 
 //Main components
 require_once($include_path.'setup.php');
+
+// Add welcome page
+require get_template_directory() . '/core/welcome-screen/welcome-page-setup.php';
