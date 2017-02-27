@@ -23,10 +23,17 @@ class Transcend_Welcome {
 			$this,
 			'transcend_dismiss_required_action_callback'
 		) );
-		add_action( 'wp_ajax_nopriv_transcend_dismiss_required_action', array(
+
+		add_action( 'wp_ajax_transcend_dismiss_recommended_plugins', array(
 			$this,
-			'transcend_dismiss_required_action_callback'
+			'transcend_dismiss_recommended_plugins_callback'
 		) );
+
+		add_action( 'wp_ajax_transcend_transcend_set_frontpage', array(
+			$this,
+			'transcend_set_pages'
+		) );
+
 
 		add_action( 'admin_init', array( $this, 'transcend_activate_plugin' ) );
 		add_action( 'admin_init', array( $this, 'transcend_deactivate_plugin' ) );
@@ -38,8 +45,7 @@ class Transcend_Welcome {
 			/**
 			 * Check action
 			 */
-			if ( ! empty( $_GET['action'] ) && $_GET['action'] === 'set_page_automatic' ) {
-				$active_tab = $_GET['tab'];
+			if ( ! empty( $_GET['action'] ) && $_GET['action'] === 'transcend_set_frontpage' ) {
 				$about      = get_page_by_title( 'Homepage' );
 				update_option( 'page_on_front', $about->ID );
 				update_option( 'show_on_front', 'page' );
@@ -47,8 +53,9 @@ class Transcend_Welcome {
 				// Set the blog page
 				$blog = get_page_by_title( 'Blog' );
 				update_option( 'page_for_posts', $blog->ID );
+				echo 'succes';
+				exit();
 
-				wp_redirect( self_admin_url( 'themes.php?page=cpotheme-welcome&tab=' . $active_tab ) );
 			}
 		}
 	}
@@ -136,15 +143,21 @@ class Transcend_Welcome {
 	 */
 	public function transcend_welcome_style_and_scripts( $hook_suffix ) {
 
-		wp_enqueue_style( 'cpotheme-welcome-screen-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome.css' );
-		wp_enqueue_script( 'cpotheme-welcome-screen-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome.js', array( 'jquery' ), '1.0', true );
+		$screen = get_current_screen();
 
-		wp_localize_script( 'cpotheme-welcome-screen-js', 'transcendWelcomeScreenObject', array(
-			'nr_actions_required'      => $this->count_actions(),
-			'ajaxurl'                  => admin_url( 'admin-ajax.php' ),
-			'template_directory'       => get_template_directory_uri(),
-			'no_required_actions_text' => __( 'Hooray! There are no required actions for you right now.', 'text-domain' )
-		) );
+		wp_enqueue_style( 'cpotheme-welcome-screen-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome.css' );
+
+		if ( $screen->base != 'customize' ) {
+			wp_enqueue_script( 'cpotheme-welcome-screen-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome.js', array( 'jquery' ), '1.0', true );
+
+			wp_localize_script( 'cpotheme-welcome-screen-js', 'transcendWelcomeScreenObject', array(
+				'nr_actions_required'      => $this->count_actions(),
+				'ajaxurl'                  => admin_url( 'admin-ajax.php' ),
+				'template_directory'       => get_template_directory_uri(),
+				'no_required_actions_text' => __( 'Hooray! There are no required actions for you right now.', 'transcend' )
+			) );
+		}
+		
 
 
 	}
@@ -155,49 +168,58 @@ class Transcend_Welcome {
 	 * @since 1.8.2.4
 	 */
 	public function transcend_dismiss_required_action_callback() {
-
 		global $transcend_required_actions;
-
-		$transcend_dismiss_id = ( isset( $_GET['dismiss_id'] ) ) ? $_GET['dismiss_id'] : 0;
-
-		echo $transcend_dismiss_id; /* this is needed and it's the id of the dismissable required action */
-
-		if ( ! empty( $transcend_dismiss_id ) ):
-
+		$action_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : 0;
+		echo $action_id; /* this is needed and it's the id of the dismissable required action */
+		if ( ! empty( $action_id ) ):
 			/* if the option exists, update the record for the specified id */
 			if ( get_option( 'transcend_show_required_actions' ) ):
-
 				$transcend_show_required_actions = get_option( 'transcend_show_required_actions' );
-
-				$transcend_show_required_actions[ $transcend_dismiss_id ] = false;
-
+				switch ( $_GET['todo'] ) {
+					case 'add';
+						$transcend_show_required_actions[ $action_id ] = true;
+						break;
+					case 'dismiss';
+						$transcend_show_required_actions[ $action_id ] = false;
+						break;
+				}
 				update_option( 'transcend_show_required_actions', $transcend_show_required_actions );
-
 			/* create the new option,with false for the specified id */
 			else:
-
 				$transcend_show_required_actions_new = array();
-
 				if ( ! empty( $transcend_required_actions ) ):
-
 					foreach ( $transcend_required_actions as $transcend_required_action ):
-
-						if ( $transcend_required_action['id'] == $transcend_dismiss_id ):
+						if ( $transcend_required_action['id'] == $action_id ):
 							$transcend_show_required_actions_new[ $transcend_required_action['id'] ] = false;
 						else:
 							$transcend_show_required_actions_new[ $transcend_required_action['id'] ] = true;
 						endif;
-
 					endforeach;
-
 					update_option( 'transcend_show_required_actions', $transcend_show_required_actions_new );
-
 				endif;
-
 			endif;
-
 		endif;
+		die(); // this is required to return a proper result
+	}
 
+	public function transcend_dismiss_recommended_plugins_callback() {
+		$action_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : 0;
+		echo $action_id; /* this is needed and it's the id of the dismissable required action */
+		if ( ! empty( $action_id ) ):
+			/* if the option exists, update the record for the specified id */
+			$transcend_show_recommended_plugins = get_option( 'transcend_show_recommended_plugins' );
+				
+				switch ( $_GET['todo'] ) {
+					case 'add';
+						$transcend_show_recommended_plugins[ $action_id ] = false;
+						break;
+					case 'dismiss';
+						$transcend_show_recommended_plugins[ $action_id ] = true;
+						break;
+				}
+				update_option( 'transcend_show_recommended_plugins', $transcend_show_recommended_plugins );
+			/* create the new option,with false for the specified id */
+		endif;
 		die(); // this is required to return a proper result
 	}
 
@@ -361,8 +383,6 @@ class Transcend_Welcome {
 				   class="nav-tab <?php echo $active_tab == 'recommended_plugins' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Plugins', 'transcend' ); ?></a>
 				<a href="<?php echo admin_url( 'themes.php?page=cpotheme-welcome&tab=support' ); ?>"
 				   class="nav-tab <?php echo $active_tab == 'support' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Support', 'transcend' ); ?></a>
-				<a href="<?php echo admin_url( 'themes.php?page=cpotheme-welcome&tab=changelog' ); ?>"
-				   class="nav-tab <?php echo $active_tab == 'changelog' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Changelog', 'transcend' ); ?></a>
 			</h2>
 
 			<?php
@@ -378,9 +398,6 @@ class Transcend_Welcome {
 					break;
 				case 'support':
 					require_once get_template_directory() . '/core/welcome-screen/sections/support.php';
-					break;
-				case 'changelog':
-					require_once get_template_directory() . '/core/welcome-screen/sections/changelog.php';
 					break;
 				default:
 					require_once get_template_directory() . '/core/welcome-screen/sections/getting-started.php';
