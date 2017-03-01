@@ -267,7 +267,7 @@ if(!function_exists('cpotheme_metadata_customizer')){
 		'section' => 'cpotheme_layout_posts',
 		'type' => 'checkbox',
 		'sanitize' => 'cpotheme_sanitize_bool',
-		'default' => false);
+		'default' => true);
 		
 		//Typography
 		$data['type_settings'] = array(
