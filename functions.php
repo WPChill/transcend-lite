@@ -13,6 +13,15 @@ define('CPOTHEME_PREMIUM_URL', 'http://www.cpothemes.com/theme/transcend');
 define('CPOTHEME_THUMBNAIL_WIDTH', 400);
 define('CPOTHEME_THUMBNAIL_HEIGHT', 500);
 
+// Add epsilon framework
+require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
+
+$epsilon_framework_settings = array(
+		'controls' => array( 'toggle', 'upsell' ), // array of controls to load
+		'sections' => array( 'recommended-actions' ), // array of sections to load
+	);
+new Epsilon_Framework( $epsilon_framework_settings );
+
 //Load Core; check existing core or load development core
 $core_path = get_template_directory().'/core/';
 if(defined('CPOTHEME_CORE')) $core_path = CPOTHEME_CORELITE;

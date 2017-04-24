@@ -20,6 +20,11 @@ if(!function_exists('cpotheme_metadata_sections')){
 	function cpotheme_metadata_sections(){
 		$data = array();
 		
+		$data['cpotheme_upsell'] = array(
+		'title' => __('Transcend Pro', 'transcend'),
+		'capability' => 'edit_theme_options',
+		'priority' => 10);
+
 		$data['cpotheme_management'] = array(
 		'title' => __('General Theme Options', 'transcend'),
 		'description' => __('Options that help you manage your theme better.', 'transcend'),
@@ -28,14 +33,12 @@ if(!function_exists('cpotheme_metadata_sections')){
 		
 		$data['cpotheme_layout_general'] = array(
 		'title' => __('Site Wide Structure', 'transcend'),
-		'description' => sprintf(__('Upgrade to %s to control the layout of your sidebars and other global elements.', 'transcend'), cpotheme_upgrade_link()),
 		'capability' => 'edit_theme_options',
 		'panel' => 'cpotheme_layout',
 		'priority' => 25);
 		
 		$data['cpotheme_layout_home'] = array(
 		'title' => __('Homepage', 'transcend'),
-		'description' => sprintf(__('Upgrade to %s to control the ordering of elements in the homepage as well as its behavior.', 'transcend'), cpotheme_upgrade_link()),
 		'capability' => 'edit_theme_options',
 		'panel' => 'cpotheme_layout',
 		'priority' => 50);
@@ -43,16 +46,14 @@ if(!function_exists('cpotheme_metadata_sections')){
 		if(defined('CPOTHEME_USE_SLIDES') && CPOTHEME_USE_SLIDES == true){
 			$data['cpotheme_layout_slider'] = array(
 			'title' => __('Slider', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to customize the behavior of the slider.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
 		}
 		
 		if(defined('CPOTHEME_USE_FEATURES') && CPOTHEME_USE_FEATURES == true){
-			$data['cpotheme_layout_features'] = array(
+			$data['cpotheme_layout_transcend'] = array(
 			'title' => __('Features', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to customize the columns and appearance of the feature blocks.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
@@ -61,7 +62,6 @@ if(!function_exists('cpotheme_metadata_sections')){
 		if(defined('CPOTHEME_USE_PORTFOLIO') && CPOTHEME_USE_PORTFOLIO == true){
 			$data['cpotheme_layout_portfolio'] = array(
 			'title' => __('Portfolio', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to control the number of portfolio columns, related portfolio items, and overall appearance.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
@@ -70,7 +70,6 @@ if(!function_exists('cpotheme_metadata_sections')){
 		if(defined('CPOTHEME_USE_SERVICES') && CPOTHEME_USE_SERVICES == true){
 			$data['cpotheme_layout_services'] = array(
 			'title' => __('Services', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to control the number of columns for services.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
@@ -79,7 +78,6 @@ if(!function_exists('cpotheme_metadata_sections')){
 		if(defined('CPOTHEME_USE_TEAM') && CPOTHEME_USE_TEAM == true){
 			$data['cpotheme_layout_team'] = array(
 			'title' => __('Team Members', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to control the number of columns of the team section.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
@@ -88,7 +86,6 @@ if(!function_exists('cpotheme_metadata_sections')){
 		if(defined('CPOTHEME_USE_TESTIMONIALS') && CPOTHEME_USE_TESTIMONIALS == true){
 			$data['cpotheme_layout_testimonials'] = array(
 			'title' => __('Testimonials', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to customize the appearance of testimonials.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
@@ -97,7 +94,6 @@ if(!function_exists('cpotheme_metadata_sections')){
 		if(defined('CPOTHEME_USE_CLIENTS') && CPOTHEME_USE_CLIENTS == true){
 			$data['cpotheme_layout_clients'] = array(
 			'title' => __('Clients', 'transcend'),
-			'description' => sprintf(__('Upgrade to %s to customize the appearance of clients.', 'transcend'), cpotheme_upgrade_link()),
 			'capability' => 'edit_theme_options',
 			'panel' => 'cpotheme_layout',
 			'priority' => 50);
@@ -111,14 +107,12 @@ if(!function_exists('cpotheme_metadata_sections')){
 
 		$data['cpotheme_layout_posts'] = array(
 		'title' => __('Blog Posts', 'transcend'),
-		'description' => sprintf(__('Upgrade to %s to control the appearance of specific elements in your blog posts such as dates, authors, or comments.', 'transcend'), cpotheme_upgrade_link()),
 		'capability' => 'edit_theme_options',
 		'panel' => 'cpotheme_layout',
 		'priority' => 50);
 		
 		$data['cpotheme_typography'] = array(
 		'title' => __('Typography', 'transcend'),
-		'description' => sprintf(__('Upgrade to %s to control the gain full control over the typography of your site.', 'transcend'), cpotheme_upgrade_link()),
 		'capability' => 'edit_theme_options',
 		'priority' => 45);
 		
@@ -131,6 +125,40 @@ if(!function_exists('cpotheme_metadata_customizer')){
 	function cpotheme_metadata_customizer($std = null){
 		$data = array();
 		
+		$data['general_upsell'] = array(
+		'section'      => 'cpotheme_upsell',
+		'type'		   => 'epsilon-upsell',
+        'options'      => array(
+            esc_html__( 'Slider options', 'transcend' ),
+            esc_html__( 'Improved Tagline', 'transcend' ),
+            esc_html__( 'WooCommerce Integration', 'transcend' ),
+            esc_html__( 'Reorder Sections', 'transcend' ),
+            esc_html__( 'Section Description', 'transcend' ),
+            esc_html__( 'Custom Colors', 'transcend' ),
+            esc_html__( 'Custom Typography', 'transcend' ),
+		    esc_html__( 'Dedicated Support Team', 'transcend'),
+		    esc_html__( 'Updates + Feature releases for 1 year', 'transcend'),
+        ),
+        'requirements' => array(
+            esc_html__( 'You can set the slider height. Also you can control the speed and the duration of a slide.', 'transcend' ),
+            esc_html__( 'In the PRO version of Allegiant, the tagline transforms in a CTA section with buttons and descriptions.', 'transcend' ),
+            esc_html__( 'Now you can add your shop products on Homepage.', 'transcend' ),
+            esc_html__( 'You can order Homepage sections anyway you want', 'transcend' ),
+            esc_html__( 'For each section, apart from title one you can also add a description for users to better understand your sections content', 'transcend' ),
+            esc_html__( 'You can change your site\'s colors directly from Customizer. Changes happen in real time.', 'transcend' ),
+            esc_html__( 'You can change your site\'s typography directly from Customizer. Changes happen in real time.', 'transcend' ),
+	   		esc_html__( 'Theme updates and support for 1 year - included with purchase', 'transcend'),
+	   		esc_html__( 'Theme updates and support for 1 year - included with purchase', 'transcend'),
+        ),
+
+        'button_url'   => esc_url_raw( get_admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
+        'button_text'  => esc_html__( 'See PRO vs Lite', 'transcend' ),
+        'second_button_url'  => cpotheme_upgrade_link(),
+        'second_button_text' => esc_html__( 'Get the PRO version!', 'transcend' ),
+        'separator' => '- or -'
+
+		);
+
 		$data['general_logo'] = array(
 		'label' => __('Custom Logo', 'transcend'),
 		'description' => __('Insert the URL of an image to be used as a custom logo.', 'transcend'),
@@ -163,14 +191,24 @@ if(!function_exists('cpotheme_metadata_customizer')){
 		'sanitize' => 'cpotheme_sanitize_bool',
 		'std' => '1');
 		
-		//Layout		
-		/*$data['general_credit'] = array(
-		'label' => __('Show Credit Link', 'transcend'),
-		'section' => 'cpotheme_layout_general',
-		'type' => 'checkbox',
-		'sanitize' => 'cpotheme_sanitize_bool',
-		'default' => '1');*/
-		
+		$data['home_upsell'] = array(
+		'section'      => 'cpotheme_layout_home',
+		'type'		   => 'epsilon-upsell',
+        'options'      => array(
+            esc_html__( 'Improved Tagline', 'transcend' ),
+            esc_html__( 'Reorder Sections', 'transcend' ),
+        ),
+        'requirements' => array(
+            esc_html__( 'In the PRO version of Allegiant, the tagline transforms in a CTA section with buttons and descriptions.', 'transcend' ),
+            esc_html__( 'You can order Homepage sections anyway you want', 'transcend' ),
+        ),
+        'button_url'   => esc_url_raw( get_admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
+        'button_text'  => esc_html__( 'See PRO vs Lite', 'transcend' ),
+        'second_button_url'  => cpotheme_upgrade_link(),
+        'second_button_text' => esc_html__( 'Get the PRO version!', 'transcend' ),
+        'separator' => '- or -'
+		);
+
 		$data['home_tagline'] = array(
 		'label' => __('Tagline Title', 'transcend'),
 		'section' => 'cpotheme_layout_home',
@@ -191,18 +229,58 @@ if(!function_exists('cpotheme_metadata_customizer')){
 		
 		//Homepage Features
 		if(defined('CPOTHEME_USE_FEATURES') && CPOTHEME_USE_FEATURES == true){
-			$data['home_features'] = array(
+			$data['transcend_upsell'] = array(
+			'section'      => 'cpotheme_layout_transcend',
+			'type'		   => 'epsilon-upsell',
+	        'options'      => array(
+	            esc_html__( 'Section Title', 'transcend' ),
+	            esc_html__( 'Features Columns', 'transcend' ),
+	        ),
+	        'requirements' => array(
+	            esc_html__( 'For each section, apart from description one you can also add a title for users to better understand your sections content', 'transcend' ),
+	            esc_html__( 'You can select on how many Columns you want to show your transcend.', 'transcend' ),
+	        ),
+	        'button_url'   => cpotheme_upgrade_link(),
+	        'button_text'  => esc_html__( 'Get the PRO version!', 'transcend' ),
+	        'button_url'   => esc_url_raw( get_admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
+	        'button_text'  => esc_html__( 'See PRO vs Lite', 'transcend' ),
+	        'second_button_url'  => cpotheme_upgrade_link(),
+	        'second_button_text' => esc_html__( 'Get the PRO version!', 'transcend' ),
+	        'separator' => '- or -'
+			);
+
+			$data['home_transcend'] = array(
 			'label' => __('Features Description', 'transcend'),
-			'section' => 'cpotheme_layout_features',
+			'section' => 'cpotheme_layout_transcend',
 			'empty' => true,
 			'multilingual' => true,
-			'default' => __('Our core features', 'transcend'),
+			'default' => __('Our core transcend', 'transcend'),
 			'sanitize' => 'wp_kses_post',
 			'type' => 'textarea');
 		}
 		
 		//Portfolio layout
-		if(defined('CPOTHEME_USE_PORTFOLIO') && CPOTHEME_USE_PORTFOLIO == true){			
+		if(defined('CPOTHEME_USE_PORTFOLIO') && CPOTHEME_USE_PORTFOLIO == true){
+			$data['portfolio_upsell'] = array(
+			'section'      => 'cpotheme_layout_portfolio',
+			'type'		   => 'epsilon-upsell',
+	        'options'      => array(
+	            esc_html__( 'Section Title', 'transcend' ),
+	            esc_html__( 'Portfolio Columns', 'transcend' ),
+	            esc_html__( 'Related Portfolios', 'transcend' ),
+	        ),
+	        'requirements' => array(
+	            esc_html__( 'For each section, apart from description one you can also add a title for users to better understand your sections content', 'transcend' ),
+	            esc_html__( 'You can select on how many Columns you want to show your portfolio.', 'transcend' ),
+	            esc_html__( 'You can enable related portfolio.', 'transcend' ),
+	        ),
+	        'button_url'   => esc_url_raw( get_admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
+	        'button_text'  => esc_html__( 'See PRO vs Lite', 'transcend' ),
+	        'second_button_url'  => cpotheme_upgrade_link(),
+	        'second_button_text' => esc_html__( 'Get the PRO version!', 'transcend' ),
+	        'separator' => '- or -'
+			);
+
 			$data['home_portfolio'] = array(
 			'label' => __('Portfolio Description', 'transcend'),
 			'section' => 'cpotheme_layout_portfolio',
@@ -215,6 +293,23 @@ if(!function_exists('cpotheme_metadata_customizer')){
 		
 		//Services layout
 		if(defined('CPOTHEME_USE_SERVICES') && CPOTHEME_USE_SERVICES == true){
+			$data['services_upsell'] = array(
+			'section'      => 'cpotheme_layout_services',
+			'type'		   => 'epsilon-upsell',
+	        'options'      => array(
+	            esc_html__( 'Section Title', 'transcend' ),
+	            esc_html__( 'Services Columns', 'transcend' ),
+	        ),
+	        'requirements' => array(
+	            esc_html__( 'For each section, apart from description one you can also add a title for users to better understand your sections content', 'transcend' ),
+	            esc_html__( 'You can select on how many Columns you want to show your services.', 'transcend' ),
+	        ),
+	        'button_url'   => esc_url_raw( get_admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
+	        'button_text'  => esc_html__( 'See PRO vs Lite', 'transcend' ),
+	        'second_button_url'  => cpotheme_upgrade_link(),
+	        'second_button_text' => esc_html__( 'Get the PRO version!', 'transcend' ),
+	        'separator' => '- or -'
+			);
 			$data['home_services'] = array(
 			'label' => __('Services Description', 'transcend'),
 			'section' => 'cpotheme_layout_services',

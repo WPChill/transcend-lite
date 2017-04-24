@@ -86,6 +86,11 @@ if(!function_exists('cpotheme_wpml_current_language')){
 			$active_language = ICL_LANGUAGE_CODE;
 			if($active_language != $default_language)
 				$language_code = '_'.$active_language;
+		}elseif ( function_exists( 'pll_current_language' ) && function_exists( 'pll_default_language' ) ) {
+			$default_language = pll_default_language();
+			$active_language = pll_current_language();
+			if($active_language != $default_language)
+				$language_code = '_'.$active_language;
 		}
 		return $language_code;
 	}
@@ -204,7 +209,6 @@ function cpotheme_sanitize_bool($data){
 
 //Return the URL to the premium theme page
 function cpotheme_upgrade_link($name = 'Customizer'){
-	$url = esc_url(CPOTHEME_PREMIUM_URL.'?utm_source=upsell&utm_medium=theme&utm_campaign='.$name);
-	$link = '<a target="_blank" href="'.$url.'">'.esc_attr(CPOTHEME_PREMIUM_NAME).'</a>';
-	return $link;
+	$url = esc_url_raw(CPOTHEME_PREMIUM_URL.'?utm_source=worg&utm_medium=customizer&utm_campaign=upsell');
+	return $url;
 }

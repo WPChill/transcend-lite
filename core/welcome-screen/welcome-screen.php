@@ -383,6 +383,8 @@ class Transcend_Welcome {
 				   class="nav-tab <?php echo $active_tab == 'recommended_plugins' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Plugins', 'transcend' ); ?></a>
 				<a href="<?php echo admin_url( 'themes.php?page=cpotheme-welcome&tab=support' ); ?>"
 				   class="nav-tab <?php echo $active_tab == 'support' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Support', 'transcend' ); ?></a>
+				<a href="<?php echo admin_url( 'themes.php?page=cpotheme-welcome&tab=features' ); ?>"
+				   class="nav-tab <?php echo $active_tab == 'features' ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Lite vs PRO', 'transcend' ); ?></a>
 			</h2>
 
 			<?php
@@ -398,6 +400,9 @@ class Transcend_Welcome {
 					break;
 				case 'support':
 					require_once get_template_directory() . '/core/welcome-screen/sections/support.php';
+					break;
+				case 'features':
+					require_once get_template_directory() . '/core/welcome-screen/sections/features.php';
 					break;
 				default:
 					require_once get_template_directory() . '/core/welcome-screen/sections/getting-started.php';
