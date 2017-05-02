@@ -20,10 +20,13 @@ if(!function_exists('cpotheme_metadata_sections')){
 	function cpotheme_metadata_sections(){
 		$data = array();
 		
-		$data['cpotheme_upsell'] = array(
-		'title' => __('Transcend Pro', 'transcend'),
-		'capability' => 'edit_theme_options',
-		'priority' => 10);
+		$data['epsilon-section-pro'] = array(
+		'type' => 'epsilon-section-pro',
+		'title'       => esc_html__( 'LITE vs PRO comparison', 'transcend' ),
+		'button_text' => esc_html__( 'Learn more', 'transcend' ),
+		'button_url'  => esc_url_raw( admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
+		'priority'    => 0
+		);
 
 		$data['cpotheme_management'] = array(
 		'title' => __('General Theme Options', 'transcend'),
@@ -124,40 +127,6 @@ if(!function_exists('cpotheme_metadata_sections')){
 if(!function_exists('cpotheme_metadata_customizer')){
 	function cpotheme_metadata_customizer($std = null){
 		$data = array();
-		
-		$data['general_upsell'] = array(
-		'section'      => 'cpotheme_upsell',
-		'type'		   => 'epsilon-upsell',
-        'options'      => array(
-            esc_html__( 'Slider options', 'transcend' ),
-            esc_html__( 'Improved Tagline', 'transcend' ),
-            esc_html__( 'WooCommerce Integration', 'transcend' ),
-            esc_html__( 'Reorder Sections', 'transcend' ),
-            esc_html__( 'Section Description', 'transcend' ),
-            esc_html__( 'Custom Colors', 'transcend' ),
-            esc_html__( 'Custom Typography', 'transcend' ),
-		    esc_html__( 'Dedicated Support Team', 'transcend'),
-		    esc_html__( 'Updates + Feature releases for 1 year', 'transcend'),
-        ),
-        'requirements' => array(
-            esc_html__( 'You can set the slider height. Also you can control the speed and the duration of a slide.', 'transcend' ),
-            esc_html__( 'In the PRO version of Allegiant, the tagline transforms in a CTA section with buttons and descriptions.', 'transcend' ),
-            esc_html__( 'Now you can add your shop products on Homepage.', 'transcend' ),
-            esc_html__( 'You can order Homepage sections anyway you want', 'transcend' ),
-            esc_html__( 'For each section, apart from title one you can also add a description for users to better understand your sections content', 'transcend' ),
-            esc_html__( 'You can change your site\'s colors directly from Customizer. Changes happen in real time.', 'transcend' ),
-            esc_html__( 'You can change your site\'s typography directly from Customizer. Changes happen in real time.', 'transcend' ),
-	   		esc_html__( 'Theme updates and support for 1 year - included with purchase', 'transcend'),
-	   		esc_html__( 'Theme updates and support for 1 year - included with purchase', 'transcend'),
-        ),
-
-        'button_url'   => esc_url_raw( get_admin_url() . 'themes.php?page=cpotheme-welcome&tab=features' ),
-        'button_text'  => esc_html__( 'See PRO vs Lite', 'transcend' ),
-        'second_button_url'  => cpotheme_upgrade_link(),
-        'second_button_text' => esc_html__( 'Get the PRO version!', 'transcend' ),
-        'separator' => '- or -'
-
-		);
 
 		$data['general_logo'] = array(
 		'label' => __('Custom Logo', 'transcend'),
