@@ -1,10 +1,11 @@
-<?php /* Template Name: Sitemap */ ?>
+<?php /* Template Name: Submenu */ ?>
 <?php get_header(); ?>
 
-<?php get_template_part('element', 'page-header'); ?>
+<?php get_template_part('template-parts/element', 'page-header'); ?>
 
 <div id="main" class="main">
 	<div class="container">
+		<?php cpotheme_submenu(); ?>
 		<section id="content" class="content">
 			<?php do_action('cpotheme_before_content'); ?>
 			
@@ -15,7 +16,6 @@
 					<?php cpotheme_post_pagination(); ?>
 				</div>
 			</div>
-			<?php cpotheme_sitemap(); ?>
 			<?php comments_template('', true); ?>
 			<?php endwhile; ?>
 			

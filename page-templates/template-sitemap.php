@@ -1,7 +1,7 @@
-<?php /* Template Name: Services */ ?>
+<?php /* Template Name: Sitemap */ ?>
 <?php get_header(); ?>
 
-<?php get_template_part('element', 'page-header'); ?>
+<?php get_template_part('template-parts/element', 'page-header'); ?>
 
 <div id="main" class="main">
 	<div class="container">
@@ -12,18 +12,12 @@
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<div class="page-content">
 					<?php the_content(); ?>
+					<?php cpotheme_post_pagination(); ?>
 				</div>
 			</div>
+			<?php cpotheme_sitemap(); ?>
+			<?php comments_template('', true); ?>
 			<?php endwhile; ?>
-			
-			<?php $columns = cpotheme_get_option('services_columns'); ?>
-			<?php $query = new WP_Query('post_type=cpo_service&posts_per_page=-1&order=ASC&orderby=menu_order'); ?>
-			<?php if($query->posts): ?>
-			<section id="services" class="services">
-				<?php cpotheme_grid($query->posts, 'element', 'service', $columns); ?>
-			</section>
-			<?php wp_reset_postdata(); ?>
-			<?php endif; ?>
 			
 			<?php do_action('cpotheme_after_content'); ?>
 		</section>

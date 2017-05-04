@@ -257,7 +257,7 @@ if(!function_exists('cpotheme_grid_default')){
 			}
 			$count++;
 			echo '<div class="column '.esc_attr($class).' col'.esc_attr($columns).'">';
-			get_template_part(esc_attr($element), esc_attr($template));
+			get_template_part('template-parts/'.esc_attr($element), esc_attr($template));
 			echo '</div>';
 		}
 		echo '</div>';
@@ -283,7 +283,7 @@ if(!function_exists('cpotheme_grid_custom')){
 			}
 			$count++;
 			echo '<div class="column '.esc_attr($class).' col'.esc_attr($columns).'">';
-			get_template_part(esc_attr($element), esc_attr($template));
+			get_template_part('template-parts/'.esc_attr($element), esc_attr($template));
 			echo '</div>';
 		}
 		echo '</div>';

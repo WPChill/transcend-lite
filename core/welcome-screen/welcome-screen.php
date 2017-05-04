@@ -145,7 +145,7 @@ class Transcend_Welcome {
 
 		$screen = get_current_screen();
 
-		wp_enqueue_style( 'cpotheme-welcome-screen-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome.css' );
+		wp_enqueue_style( 'cpotheme-welcome-screen-css', get_template_directory_uri() . '/core/welcome-screen/css/welcome.css', array(), '1.1.2' );
 
 		if ( $screen->base != 'customize' ) {
 			wp_enqueue_script( 'cpotheme-welcome-screen-js', get_template_directory_uri() . '/core/welcome-screen/js/welcome.js', array( 'jquery' ), '1.0', true );
