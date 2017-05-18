@@ -96,7 +96,7 @@ if(!function_exists('cpotheme_add_styles')){
 		wp_enqueue_style('cpotheme-main', get_stylesheet_uri());
 		
 		//Font Libraries
-		wp_register_style('cpotheme-fontawesome', $stylesheets_path.'icon-fontawesome.css');
+		wp_enqueue_style('cpotheme-fontawesome', $stylesheets_path.'icon-fontawesome.css');
 	}
 }
 
