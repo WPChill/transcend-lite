@@ -122,7 +122,9 @@ input[type=submit] { width:auto; -webkit-appearance:none; }
 .slider-slides .slide-center .slide-link { -moz-transform:translateY(40px); -webkit-transform:translateY(40px); transform:translateY(40px); }
 .slider-slides .cycle-slide-active .slide-title,
 .slider-slides .cycle-slide-active .slide-content,
-.slider-slides .cycle-slide-active .slide-link { -moz-transform:none; -webkit-transform:none; transform:none; opacity:1; }
+.slider-slides .cycle-slide-active .slide-link,
+.slider-slides.one-slide .slide-content,
+.slider-slides.one-slide .slide-title { -moz-transform:none; -webkit-transform:none; transform:none; opacity:1; }
 
 
 /* BREADCRUMBS */
