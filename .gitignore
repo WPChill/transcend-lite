@@ -1,1 +1,7 @@
-.idea
+node_modules/*
+.idea/*
+transcend.zip
+.gitignore
+.jscsrc
+.jshintignore
+.jshintrc

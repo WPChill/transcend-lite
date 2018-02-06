@@ -66,8 +66,8 @@ $features = array(
         <thead>
         <tr>
             <th></th>
-            <th><?php _e( 'Lite', 'affluent' ) ?></th>
-            <th><?php _e( 'PRO', 'affluent' ) ?></th>
+            <th><?php _e( 'Lite', 'transcend' ) ?></th>
+            <th><?php _e( 'PRO', 'transcend' ) ?></th>
         </tr>
         </thead>
         <tbody>
