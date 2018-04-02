@@ -1,7 +1,7 @@
 <?php if(!isset($content_width)) $content_width = 640;
 define('CPOTHEME_ID', 'transcend');
 define('CPOTHEME_NAME', 'Transcend');
-define('CPOTHEME_VERSION', '1.0.11');
+define('CPOTHEME_VERSION', '1.1.5');
 //Other constants
 define('CPOTHEME_LOGO_WIDTH', '180');
 define('CPOTHEME_USE_SLIDES', true);
