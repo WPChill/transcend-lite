@@ -27,3 +27,7 @@ require_once($include_path.'setup.php');
 if ( ! class_exists( 'CPO_Theme' ) ) {
 	require get_template_directory() . '/includes/class-cpo-theme.php';
 }
+
+if ( ! defined( 'SHORTPIXEL_AFFILIATE_CODE' ) ) {
+    define( 'SHORTPIXEL_AFFILIATE_CODE', '3AXNUKA28044' );
+}
