@@ -5,7 +5,7 @@ class CPO_Theme {
 	private $path;
 	private $plugins;
 	private $actions;
-	
+
 	function __construct() {
 
 		$this->path = get_template_directory() . '/includes/';
@@ -13,8 +13,7 @@ class CPO_Theme {
 
 		// Recomended Plugins
 		$this->plugins = array(
-			'wpforms-lite'               => array( 'recommended' => true ),
-			'shortpixel-image-optimiser' => array( 'recommended' => true ),
+			'kali-forms'                 => array( 'recommended' => true ),
 			'simple-author-box'          => array( 'recommended' => true ),
 			'kiwi-social-share'          => array( 'recommended' => false ),
 			'uber-nocaptcha-recaptcha'   => array( 'recommended' => false ),
@@ -44,7 +43,7 @@ class CPO_Theme {
 				"plugin_slug" => 'modula-best-grid-gallery',
 			),
 		);
-		
+
 		$this->init_epsilon();
 		$this->init_welcome_screen();
 
@@ -136,7 +135,7 @@ class CPO_Theme {
 			$html  = '<p><a class="button button-primary cpo-import-button epsilon-ajax-button" data-action="import_demo" id="add_default_sections" href="#">' . __( 'Import Demo Content', 'transcend' ) . '</a>';
 			$html .= '<a class="button epsilon-hidden-content-toggler" href="#welcome-hidden-content">' . __( 'Advanced', 'transcend' ) . '</a></p>';
 			$html .= '<div class="import-content-container" id="welcome-hidden-content">';
-			
+
 			foreach ( $import_plugins as $id => $label ) {
 				if ( ! CPOTheme_Notify_System::has_plugin( $id ) ) {
 					$plugins_html .= $this->generate_checkbox( $id, $label, 'plugins', true );
@@ -151,7 +150,7 @@ class CPO_Theme {
 				$html .= '</div>';
 				$html .= '</div>';
 			}
-			
+
 			$html .= '<div class="demo-content-container">';
 			$html .= '<h4>' . __( 'Demo Content', 'transcend' ) . '</h4>';
 			$html .= '<div class="checkbox-group">';

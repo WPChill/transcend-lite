@@ -697,7 +697,7 @@
 	</wp:term>
 
 	<generator>https://wordpress.org/?v=4.9.2</generator>
-	
+
 	<item>
 		<title>woman</title>
 		<link>http://demos.cpothemes.com/transcend/portfolio-item/dark-places/woman/</link>
@@ -2781,11 +2781,11 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 		<dc:creator><![CDATA[cpothemes_demo]]></dc:creator>
 		<guid isPermaLink="false">http://demo.cpothemes.com/illustrious/?page_id=10</guid>
 		<description></description>
-		<content:encoded><![CDATA[<strong>The theme integrates with Contact Form 7 so you can seamlessly create contact forms in any of your pages.</strong>
+		<content:encoded><![CDATA[<strong>The theme integrates with Kaliforms so you can seamlessly create contact forms in any of your pages.</strong>
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-[contact-form-7 id="1990" title="Contact Form"]]]></content:encoded>
+[kaliform id="1"]]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>10</wp:post_id>
 		<wp:post_date><![CDATA[2012-02-16 10:01:06]]></wp:post_date>
@@ -3276,7 +3276,7 @@ Form response
 [your-name] <[your-email]>
 wordpress@cpo.es
 From: [your-name] <[your-email]>
-Subject: 
+Subject:
 
 
 
@@ -3355,7 +3355,7 @@ Email
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_mail]]></wp:meta_key>
 			<wp:meta_value><![CDATA[a:9:{s:6:"active";b:1;s:7:"subject";s:13:"Form response";s:6:"sender";s:26:"[your-name] <[your-email]>";s:9:"recipient";s:16:"wordpress@cpo.es";s:4:"body";s:141:"From: [your-name] <[your-email]>
-Subject: 
+Subject:
 
 
 
