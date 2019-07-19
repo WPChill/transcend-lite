@@ -5,7 +5,7 @@ Description:Transcend is a business WordPress theme geared towards agencies and 
 Tags:gray, red, white, one-column, two-columns, light, right-sidebar, full-width-template, sticky-post, theme-options, responsive-layout, custom-background, custom-menu, featured-images, threaded-comments, translation-ready
 Author:CPOThemes
 Author URI:http://www.cpothemes.com
-Version:1.1.6
+Version:1.1.7
 License:GNU General Public License 2.0 or later
 License URI:http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:transcend
@@ -21,11 +21,11 @@ body { font-family:'Open Sans', Arial, Helvetica, sans-serif; font-weight:300; b
 
 /* HEADINGS */
 h1, h2, h3, h4, h5, h6 { font-family:'Raleway'; color:#556677; line-height:1.2; margin:0 0 20px; }
-h1 { font-size:2.5em; } 
-h2 { font-size:2em; } 
-h3 { font-size:1.5em; } 
-h4 { font-size:1.3em; } 
-h5 { font-size:1.2em; } 
+h1 { font-size:2.5em; }
+h2 { font-size:2em; }
+h3 { font-size:1.5em; }
+h4 { font-size:1.3em; }
+h5 { font-size:1.2em; }
 h6 { font-size:1.1em; }
 
 /* HYPERLINKS */
@@ -37,10 +37,10 @@ blockquote { display:block; font-style:italic; padding:0 5%; margin:25px 0; }
 blockquote cite, blockquote em, blockquote i { font-style:normal; }
 
 /* FORMS */
-input[type=text], input[type=password], input[type=input], 
-input[type=tel], input[type=url], input[type=email], 
-input[type=number], input[type=range], input[type=search], input[type=color], 
-input[type=time], input[type=week], input[type=month], input[type=date], input[type=datetime], 
+input[type=text], input[type=password], input[type=input],
+input[type=tel], input[type=url], input[type=email],
+input[type=number], input[type=range], input[type=search], input[type=color],
+input[type=time], input[type=week], input[type=month], input[type=date], input[type=datetime],
 textarea, select { border:1px solid #ddd; padding:8px; background:#f6f6f6; border-radius:2px; }
 input[type=submit] { width:auto; -webkit-appearance:none; }
 
@@ -189,8 +189,8 @@ input[type=submit] { width:auto; -webkit-appearance:none; }
 
 
 /* MENU ITEMS */
-.menu-item.menu-highlight > a, 
-.menu-main .menu-highlight.current_page_ancestor > a, 
+.menu-item.menu-highlight > a,
+.menu-main .menu-highlight.current_page_ancestor > a,
 .menu-main .menu-highlight.current-menu-item > a { border-radius:0; }
 
 
@@ -205,20 +205,20 @@ input[type=submit] { width:auto; -webkit-appearance:none; }
 .menu-main > ul > li { border-left:1px solid #eee; border-radius:0; }
 .menu-main li a { padding:30px 10px; font-size:1em; color:#777; }
 .menu-main li a .menu-description { text-transform:uppercase; }
-.menu-main li:hover > a, 
+.menu-main li:hover > a,
 .menu-main li a:hover { }
 /* Current item highlight both normally and on hover */
-.menu-main .current-menu-ancestor > a, 
+.menu-main .current-menu-ancestor > a,
 .menu-main .current-menu-item > a { position:relative; background:rgba(0,0,0,0.02); color:#89ce40; }
-.menu-main .current-menu-ancestor > a:before, 
+.menu-main .current-menu-ancestor > a:before,
 .menu-main > .current-menu-item > a:before { position:absolute; display:block; content:' '; top:0; left:0; width:100%; height:4px; background:#89ce40; }
-.menu-main .current_page_ancestor > a:hover, 
+.menu-main .current_page_ancestor > a:hover,
 .menu-main .current-menu-item > a:hover { }
 /* Children Elements */
 .menu-main .has-children:before { color:#ccc; content:'\f0d7'; font-size:10px; }
 .menu-main li ul { margin:0; background:#fff; box-shadow:inset 0 10px 3px -8px rgba(0,0,0,0.2), 0 2px 2px 0px rgba(0,0,0,0.2); }
 .menu-main li ul li a { text-transform:none; padding:8px 10px; }
-.menu-main li ul li:hover > a, 
+.menu-main li ul li:hover > a,
 .menu-main li ul li a:hover { background-color:none; }
 
 
@@ -262,7 +262,7 @@ input[type=submit] { width:auto; -webkit-appearance:none; }
 
 
 /* NUMBERED PAGINATION */
-.pagination span, 
+.pagination span,
 .pagination a { border-radius:3px; }
 .pagination .current { background:#89ce40; }
 
@@ -421,9 +421,9 @@ RESPONSIVE STYLES
 
 /* TABLET PORTRAIT */
 @media screen and (max-width: 800px){
-    
+
 	.header .logo { float:left; }
-	
+
 	.pagetitle .pagetitle-title { float:none; font-size:2em; }
 	.breadcrumb { float:none; }
 }
@@ -431,16 +431,16 @@ RESPONSIVE STYLES
 
 /* SMARTPHONE */
 @media only screen and (max-width: 600px){
-	
+
 	.topmenu { display:none; }
-	
+
 	.social { float:left; }
-	
+
 	/* NAVIGATION */
 	.menu-top { text-align:center;  }
 	.menu-top li { display:inline-block; }
 	.menu-top li a { margin:0 auto; }
-	
+
 	.footermenu { float:none; }
 	.menu-footer li a { margin:0 10px 10px 0; }
 }
