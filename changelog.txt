@@ -1,3 +1,6 @@
+Version 1.1.8
+Improved accesibility with keyboard navigation
+
 Version 1.1.7
 Minor Backend Tweaks
 
