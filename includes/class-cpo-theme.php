@@ -44,8 +44,8 @@ class CPO_Theme {
 			),
 			array(
 				'id'          => 'transcend-req-ac-install-kali-forms',
-				'title'       => CPOTheme_Notify_System::create_plugin_requirement_title( __( 'Install: Kaliforms', 'transcend' ), __( 'Activate: Kaliforms', 'transcend' ), 'kali-forms' ),
-				'description' => __( 'It is highly recommended that you install the Kaliforms plugin.', 'transcend' ),
+				'title'       => CPOTheme_Notify_System::create_plugin_requirement_title( __( 'Install: Kali Forms', 'transcend' ), __( 'Activate: Kali Forms', 'transcend' ), 'kali-forms' ),
+				'description' => __( 'It is highly recommended that you install the Kali Forms plugin.', 'transcend' ),
 				'check'       => CPOTheme_Notify_System::has_plugin( 'kali-forms' ),
 				'plugin_slug' => 'kali-forms',
 			),
