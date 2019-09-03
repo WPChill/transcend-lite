@@ -131,7 +131,7 @@ class CPO_Theme {
 		$import_plugins = array(
 			'cpo-companion'            => esc_html__( 'CPO Companion', 'transcend' ),
 			'modula-best-grid-gallery' => esc_html__( 'Modula Gallery', 'transcend' ),
-			'kali-forms'               => esc_html__( 'Kali Forms', 'allegiant' ),
+			'kali-forms'               => esc_html__( 'Kali Forms', 'transcend' ),
 		);
 
 		$plugins_html = '';
