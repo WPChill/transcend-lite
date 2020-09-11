@@ -32,9 +32,8 @@ Magnific Popup - http://dimsemenov.com/plugins/magnific-popup/
 License: MIT License
 Copyright: Stephane Caron
 
-Slide Image - https://pixabay.com/es/rural-por-carretera-paisaje-hierba-690549/
+Slide Image - https://pxhere.com/en/photo/892753
 License: CC0 License
-Copyright: Unsplash
 
 Screenshot and all image resources
 License: GPLv2 General Public License
