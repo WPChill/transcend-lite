@@ -798,7 +798,8 @@ if(!function_exists('cpotheme_comment')){
 		$GLOBALS['comment'] = $comment;
 
 		//Normal Comments
-		switch($comment->comment_type): case '': ?>
+		switch($comment->comment_type):
+			case 'comment': ?>
 		<li <?php comment_class('comment'); ?> id="comment-<?php comment_ID(); ?>">
 			<div class="comment-avatar">
 				<?php echo get_avatar($comment, 100); ?>
