@@ -1,5 +1,6 @@
 Version 1.2.0
 Fixed comment display on blog posts
+Fixed security issue nonce verification
 
 Version 1.1.8
 Improved accesibility with keyboard navigation
