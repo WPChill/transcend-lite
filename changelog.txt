@@ -1,4 +1,7 @@
 Version 1.2.1
+Theme Standards
+
+Version 1.2.1
 Jquery Update
 Minor backend tweaks
 
